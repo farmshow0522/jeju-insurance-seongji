@@ -1,26 +1,103 @@
+/* ── 본문: Pretendard (외부 @import는 맨 위) ─────── */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ── 제목: Gmarket Sans ─────────────────────────── */
+@font-face {
+  font-family: "GmarketSans";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff") format("woff");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "GmarketSans";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff") format("woff");
+  font-weight: 500;
+  font-display: swap;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --color-basalt: #2b2a28;   /* 현무암 검정 · 포인트 */
+  --color-tangerine: #f5872b; /* 감귤 주황 · 강조 */
+  --color-tangerine-dark: #d96f16;
+  --color-sand: #f4efe6;      /* 모래색 · 배경 */
+  --color-sand-deep: #ebe3d5;
+  --color-ink: #3b3530;       /* 본문 */
+  --color-muted: #8a8480;     /* 보조 */
+  --color-line: #e0d8c9;      /* 구분선 */
+  --color-paper: #fbf9f4;     /* 카드 배경 */
+
+  --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-display: "GmarketSans", "Pretendard", sans-serif;
+
+  --container-content: 42.5rem; /* 680px 본문 폭 (max-w-content) */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-sand);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* 가이드·기준·사례 본문 (max 680px, 읽기 편하게) */
+.prose-doc {
+  color: var(--color-ink);
+  line-height: 1.75;
+}
+.prose-doc h2 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--color-basalt);
+  margin: 2rem 0 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--color-tangerine);
+  display: inline-block;
+}
+.prose-doc h3 {
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 1.25rem 0 0.5rem;
+}
+.prose-doc p { margin: 0.6rem 0; }
+.prose-doc ul { list-style: disc; padding-left: 1.25rem; margin: 0.6rem 0; }
+.prose-doc ol { list-style: decimal; padding-left: 1.25rem; margin: 0.6rem 0; }
+.prose-doc li { margin: 0.3rem 0; }
+.prose-doc strong { color: var(--color-basalt); }
+.prose-doc a { color: var(--color-tangerine-dark); text-decoration: underline; }
+
+/* 표: 모바일에서 가로 스크롤 */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.table-scroll table {
+  min-width: 32rem;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.table-scroll th,
+.table-scroll td {
+  border: 1px solid var(--color-line);
+  padding: 0.55rem 0.7rem;
+  text-align: left;
+  vertical-align: top;
+}
+.table-scroll th {
+  background-color: var(--color-sand-deep);
+  font-weight: 700;
+  color: var(--color-basalt);
+  white-space: nowrap;
 }
